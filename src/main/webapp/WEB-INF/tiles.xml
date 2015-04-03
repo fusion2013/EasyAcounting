@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="login" template="/pages/login.jsp">
+		<put-attribute name="title" value="Login" />
+	</definition>
+
+  <definition name="common" template="/pages/layout/classic.jsp">
+    <put-attribute name="header" value="/pages/layout/header.jsp" />
+    <put-attribute name="menu" value="/pages/layout/menu.jsp" />
+    <put-attribute name="body" value="/pages/layout/body.jsp" />
+    <put-attribute name="footer" value="/pages/layout/footer.jsp" />
+  </definition>
+  
+  <definition name="commonWithoutMenu" template="/pages/layout/classicWithoutMenu.jsp">
+  	<put-attribute name="header" value="/pages/layout/header.jsp" />
+    <put-attribute name="body" value="/pages/layout/body.jsp" />
+    <put-attribute name="footer" value="/pages/layout/footer.jsp" />
+  </definition>
+  
+  <definition name="dashboard" extends="common">
+    <put-attribute name="title" value="Dashboard" />
+    <put-attribute name="body" value="/pages/dashboard.jsp" />
+  </definition>
+  <definition name="user.profile" extends="common">
+    <put-attribute name="title" value="My Details" />
+    <put-attribute name="body" value="/pages/user-profile.jsp" />
+  </definition>
+  <definition name="company.profile" extends="common">
+    <put-attribute name="title" value="Company Details" />
+    <put-attribute name="body" value="/pages/company-profile.jsp" />
+  </definition>
+  
+  <definition name="master.file.manage" extends="common">
+    <put-attribute name="title" value="Files" />
+    <put-attribute name="body" value="/pages/master/file.jsp" />
+  </definition>
+  <definition name="master.file.select" extends="commonWithoutMenu">
+    <put-attribute name="title" value="Files" />
+    <put-attribute name="body" value="/pages/master/file.jsp" />
+  </definition>
+  
+  <definition name="master.account-group.manage" extends="common">
+    <put-attribute name="title" value="Account Group" />
+    <put-attribute name="body" value="/pages/master/account-group.jsp" />
+  </definition>
+  <definition name="master.account.manage" extends="common">
+    <put-attribute name="title" value="Manage Accounts" />
+    <put-attribute name="body" value="/pages/master/account.jsp" />
+  </definition>
+  
+  <definition name="master.item-group.manage" extends="common">
+    <put-attribute name="title" value="Item Group" />
+    <put-attribute name="body" value="/pages/master/item-group.jsp" />
+  </definition>
+  <definition name="master.item.manage" extends="common">
+    <put-attribute name="title" value="Manage Items" />
+    <put-attribute name="body" value="/pages/master/item.jsp" />
+  </definition>
+  
+  <definition name="master.sale-tax.manage" extends="common">
+    <put-attribute name="title" value="SaleTax" />
+    <put-attribute name="body" value="/pages/master/sale-tax.jsp" />
+  </definition>
+  <definition name="master.vat.manage" extends="common">
+    <put-attribute name="title" value="VAT" />
+    <put-attribute name="body" value="/pages/master/vat.jsp" />
+  </definition>
+  
+  <definition name="master.state.manage" extends="common">
+    <put-attribute name="title" value="State" />
+    <put-attribute name="body" value="/pages/master/state.jsp" />
+  </definition>
+  
+  <definition name="master.charge.manage" extends="common">
+    <put-attribute name="title" value="Charge" />
+    <put-attribute name="body" value="/pages/master/charge.jsp" />
+  </definition>
+  
+  <definition name="master.daybook.manage" extends="common">
+    <put-attribute name="title" value="Daybook" />
+    <put-attribute name="body" value="/pages/master/daybook.jsp" />
+  </definition>
+  
+  <definition name="transaction.purchase.manage" extends="common">
+    <put-attribute name="title" value="Purchase" />
+    <put-attribute name="body" value="/pages/transaction/purchase.jsp" />
+  </definition>
+  <definition name="transaction.payment.manage" extends="common">
+    <put-attribute name="title" value="Payment" />
+    <put-attribute name="body" value="/pages/transaction/payment.jsp" />
+  </definition>
+  <definition name="transaction.sale.manage" extends="common">
+    <put-attribute name="title" value="Sale" />
+    <put-attribute name="body" value="/pages/transaction/sale.jsp" />
+  </definition>
+  <definition name="transaction.receipt.manage" extends="common">
+    <put-attribute name="title" value="Receipt" />
+    <put-attribute name="body" value="/pages/transaction/receipt.jsp" />
+  </definition>
+  <definition name="transaction.journal.manage" extends="common">
+    <put-attribute name="title" value="Journal" />
+    <put-attribute name="body" value="/pages/transaction/journal.jsp" />
+  </definition>
+  
+</tiles-definitions>
