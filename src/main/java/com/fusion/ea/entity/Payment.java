@@ -1,6 +1,7 @@
 package com.fusion.ea.entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -41,7 +42,7 @@ public class Payment implements Serializable {
 	@JoinColumn(name="file_id")
 	private File file;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="paymentId",cascade=CascadeType.ALL)
 	List<PaymentAccount> paymentAccounts = new ArrayList<PaymentAccount>();
 	
 	@Column(name="deleted")
@@ -170,5 +171,5 @@ public class Payment implements Serializable {
 	public void setCashBankString(String cashBankString) {
 		this.cashBankString = cashBankString;
 	}
-
+	
 }

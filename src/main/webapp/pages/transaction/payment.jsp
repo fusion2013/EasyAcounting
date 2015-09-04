@@ -16,6 +16,7 @@
 		
 		$("#saveBtn").keyup(function(event){
 		    if(event.keyCode == 13){
+		    	event.preventDefault();
 		        submitForm();
 		    }
 		});
@@ -166,7 +167,7 @@
 	        //put focus
 	        $("#party"+num).focus();
 	        showSuggestion("party"+num);
-	        
+	        $(".currency").maskMoney();
 		} else {
 			
 		}
@@ -187,15 +188,13 @@
         var total = 0;
         for(index=0; index<(num);index++) {
         	var amount = $("#amount"+index).val();
-        	
-        	amount = amount.replaceAll(",","");
-        	alert(""+amount);
+        	amount = amount.replace(/,/g , "");
         	if(parseFloat(amount)!=NaN && amount!=undefined
         			&& amount!="") {
         		total = total + parseFloat(amount);
         	}
         }
-        $("#total").val(total);
+        $("#total").val(amount);
 	}
 	
 	function showSuggestion(id) {

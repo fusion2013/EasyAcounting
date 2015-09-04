@@ -49,6 +49,7 @@ public class PaymentController {
 			List<PaymentAccount> pas = new ArrayList<PaymentAccount>();
 			pas.add(pa);
 			p.setPaymentAccounts(pas);
+			model.addAttribute("paymentAccs", pas);
 			model.addAttribute("payment", p);
 			model.addAttribute("payments", paymentService.findAll());
 		} catch (Exception e) {
@@ -63,18 +64,18 @@ public class PaymentController {
 			HttpServletRequest request) {
 		try {
 			//validate
-//			PaymentValidator validator = new PaymentValidator(paymentService, accService, partyList);
-//			validator.validate(payment, result);
-//			if(result.hasErrors()) {
-//				model.addAttribute("showForm", true);
-//				model.addAttribute("account", payment);
-//				model.addAttribute("payments", paymentService.findAll());
-//				return "transaction.payment.manage";
-//			}
+			PaymentValidator validator = new PaymentValidator(paymentService, accService);
+			validator.validate(payment, result);
+			if(result.hasErrors()) {
+				model.addAttribute("showForm", true);
+				model.addAttribute("account", payment);
+				model.addAttribute("payments", paymentService.findAll());
+				return "transaction.payment.manage";
+			}
 			
 			//set values
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
-			Date entryDate = sdf.parse(payment.getDateString());
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+			Date entryDate = sdf.parse(payment.getDateString()+" 00:00:00");
 			Account cashBank = accService.findByName(payment.getCashBankString());
 			double total = 0;
 			for(PaymentAccount pa : payment.getPaymentAccounts()) {
@@ -82,6 +83,7 @@ public class PaymentController {
 				double amt = Double.parseDouble(pa.getAmountString().replace(",", ""));
 				pa.setAmount(amt);
 				pa.setPaymentId(payment);
+				pa.setRemarks(pa.getRemarks());
 				total = total + pa.getAmount();
 			}
 			payment.setTotal(total);
@@ -93,10 +95,10 @@ public class PaymentController {
 			
 			//models
 			Payment p = new Payment();
-			PaymentAccount pa = new PaymentAccount();
-			List<PaymentAccount> pas = new ArrayList<PaymentAccount>();
-			pas.add(pa);
-			p.setPaymentAccounts(pas);
+			PaymentAccount paT = new PaymentAccount();
+			List<PaymentAccount> paList = new ArrayList<PaymentAccount>();
+			paList.add(paT);
+			p.setPaymentAccounts(paList);
 			model.addAttribute("payment", p);
 			model.addAttribute("showForm", true);
 			model.addAttribute("payments", paymentService.findAll());
